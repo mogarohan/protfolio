@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* High-Contrast Tech Palette from image_4f3ca2.png */
+  --neon-cyan: #00CEC9;     /* Cyan Neon - Primary Sharp Tech Accent */
+  --neon-purple: #0984E3;   /* Electric Blue - Secondary Smooth Tech Accent */
+  
+  /* Absolute Pure Black Theme Infrastructure */
+  --bg-dark: #000000;       /* Force Pure Pitch Black */
+  --card-bg: #111112;       /* Premium Dark Charcoal for clean card separation on pure black */
+  --text-light: #F5F6FA;    /* Cloud White - High-readability Typography */
+}
+
+/* Mobile responsive fix: force full width and true deep black background */
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important; /* Force no horizontal scroll */
+  background-color: var(--bg-dark) !important;
+  color: var(--text-light);
+  font-family: 'DM Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.font-syne { font-family: 'Syne', sans-serif; }
+
+/* Fixed tech-grid to match the Electric Blue and Cyan interface flow on Pure Black */
+.tech-grid {
+  background-image: 
+    linear-gradient(rgba(0, 206, 201, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 206, 201, 0.025) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-10px); }
+}
+
+.animate-fade-up   { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-fade-up-2 { animation: fadeUp 0.8s 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+.animate-fade-up-3 { animation: fadeUp 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+.animate-fade-up-4 { animation: fadeUp 0.8s 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+.animate-float     { animation: float 4s ease-in-out infinite; }
+
+/* Utilities */
+.gradient-text {
+  background: linear-gradient(to right, var(--neon-cyan), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Prevent overflow on mobile elements */
+img, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   🚀 AGGRESSIVE PURE BLACK OVERRIDES
+   ========================================================================== */
+
+/* Target elements sequentially to lock color values deep down the tree hierarchy */
+html,
+body, 
+main,
+section, 
+nav,
+footer,
+div[class*="bg-[#050505]"], 
+div[class*="bg-[#0a0a0a]"], 
+div[class*="bg-[#1E272E]"], 
+section[class*="bg-[#050505]"], 
+section[class*="bg-[#0a0a0a]"],
+.bg-black {
+  background-color: #000000 !important;
+}
+
+/* Keeps card structures beautifully distinct from the pure black base block */
+div[class*="bg-[#111]"], 
+div[class*="bg-[#151515]"],
+div[class*="bg-[#1a1a1a]"],
+div[class*="bg-[#141A1F]"],
+.project-card {
+  background-color: var(--card-bg) !important;
+}
+
+/* Fine-tune technical component outlines to merge cleanly with the environment setup */
+[class*="border-gray-"],
+[class*="border-zinc-"] {
+  border-color: rgba(0, 206, 201, 0.08) !important;
+}
